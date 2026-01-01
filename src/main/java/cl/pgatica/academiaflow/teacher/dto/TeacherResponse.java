@@ -1,12 +1,12 @@
-package cl.pgatica.academiaflow.dto;
+package cl.pgatica.academiaflow.teacher.dto;
 
 public class TeacherResponse {
 
-    private Long id;
-    private String rut;
-    private String nombres;
-    private String apellidos;
-    private String email;
+    private final Long id;
+    private final String rut;
+    private final String nombres;
+    private final String apellidos;
+    private final String email;
 
     public TeacherResponse(Long id, String rut, String nombres, String apellidos, String email) {
         this.id = id;

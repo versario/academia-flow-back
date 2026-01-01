@@ -1,4 +1,4 @@
-package cl.pgatica.academiaflow.model;
+package cl.pgatica.academiaflow.teacher.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -6,27 +6,40 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "teachers")
+@Table(
+  name = "teachers",
+  uniqueConstraints = {
+    @UniqueConstraint(columnNames = "rut")
+  }
+)
 public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, updatable = false, length = 12)
     private String rut;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String names;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String lastNames;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 255)
     private String email;
 
-    public Teacher() {
+    protected Teacher() {
+    }
+
+    public Teacher(String rut, String names, String lastNames, String email) {
+        this.rut = rut;
+        this.names = names;
+        this.lastNames = lastNames;
+        this.email = email;
     }
 
     public Long getId() {
@@ -37,28 +50,24 @@ public class Teacher {
         return rut;
     }
 
-    public void setRut(String rut) {
-        this.rut = rut;
-    }
-
     public String getNames() {
         return names;
-    }
-
-    public void setNames(String names) {
-        this.names = names;
     }
 
     public String getLastNames() {
         return lastNames;
     }
 
-    public void setLastNames(String lastNames) {
-        this.lastNames = lastNames;
-    }
-
     public String getEmail() {
         return email;
+    }
+
+    public void setNames(String names) {
+        this.names = names;
+    }
+
+    public void setLastNames(String lastNames) {
+        this.lastNames = lastNames;
     }
 
     public void setEmail(String email) {
