@@ -6,6 +6,10 @@ import cl.pgatica.academiaflow.student.dto.StudentResponse;
 
 public class StudentMapper {
 
+    private StudentMapper() {
+        // Constructor privado para evitar instanciación
+    }
+
     public static Student toEntity(StudentCreateRequest request) {
         return new Student(
             request.getRut(),

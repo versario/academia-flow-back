@@ -6,6 +6,10 @@ import cl.pgatica.academiaflow.teacher.model.Teacher;
 
 public class TeacherMapper {
 
+    private TeacherMapper() {
+        // Constructor privado para evitar instanciación
+    }
+
     public static Teacher toEntity(TeacherCreateRequest request) {
         return new Teacher(
             request.getRut(),
