@@ -1,4 +1,4 @@
-package cl.pgatica.academiaflow.student.mapper;
+package cl.pgatica.academiaflow.student;
 
 import cl.pgatica.academiaflow.student.model.Student;
 import cl.pgatica.academiaflow.student.dto.StudentCreateRequest;

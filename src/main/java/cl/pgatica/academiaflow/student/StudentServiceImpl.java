@@ -10,7 +10,7 @@ import cl.pgatica.academiaflow.student.StudentService;
 import cl.pgatica.academiaflow.student.dto.StudentResponse;
 import cl.pgatica.academiaflow.student.dto.StudentCreateRequest;
 import cl.pgatica.academiaflow.student.dto.StudentUpdateRequest;
-import cl.pgatica.academiaflow.student.mapper.StudentMapper;
+import cl.pgatica.academiaflow.student.StudentMapper;
 
 import cl.pgatica.academiaflow.exception.ConflictException;
 import cl.pgatica.academiaflow.exception.ResourceNotFoundException;

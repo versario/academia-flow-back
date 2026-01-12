@@ -1,4 +1,4 @@
-package cl.pgatica.academiaflow.teacher.mapper;
+package cl.pgatica.academiaflow.teacher;
 
 import cl.pgatica.academiaflow.teacher.dto.TeacherResponse;
 import cl.pgatica.academiaflow.teacher.dto.TeacherCreateRequest;
