@@ -5,12 +5,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import cl.pgatica.academiaflow.teacher.model.Teacher;
-import cl.pgatica.academiaflow.teacher.TeacherRepository;
-import cl.pgatica.academiaflow.teacher.TeacherService;
 import cl.pgatica.academiaflow.teacher.dto.TeacherResponse;
 import cl.pgatica.academiaflow.teacher.dto.TeacherCreateRequest;
 import cl.pgatica.academiaflow.teacher.dto.TeacherUpdateRequest;
-import cl.pgatica.academiaflow.teacher.TeacherMapper;
 
 import cl.pgatica.academiaflow.exception.ConflictException;
 import cl.pgatica.academiaflow.exception.ResourceNotFoundException;

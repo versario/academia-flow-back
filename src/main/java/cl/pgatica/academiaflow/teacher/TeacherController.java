@@ -7,7 +7,6 @@ import jakarta.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 
-import cl.pgatica.academiaflow.teacher.TeacherService;
 import cl.pgatica.academiaflow.teacher.dto.TeacherResponse;
 import cl.pgatica.academiaflow.teacher.dto.TeacherCreateRequest;
 import cl.pgatica.academiaflow.teacher.dto.TeacherUpdateRequest;
