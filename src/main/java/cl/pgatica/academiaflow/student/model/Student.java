@@ -18,18 +18,19 @@ import jakarta.persistence.UniqueConstraint;
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    @Column(nullable = false, updatable = false, length = 12)
+    @Column(name = "rut", nullable = false, updatable = false, length = 12)
     private String rut;
 
-    @Column(nullable = false, length = 100)
+    @Column(name = "names", nullable = false, length = 100)
     private String names;
 
-    @Column(nullable = false, length = 100)
+    @Column(name = "last_names", nullable = false, length = 100)
     private String lastNames;
 
-    @Column(nullable = false, length = 255)
+    @Column(name = "email", nullable = false, length = 255)
     private String email;
 
     protected Student() {
