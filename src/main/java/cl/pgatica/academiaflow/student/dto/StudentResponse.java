@@ -1,18 +1,26 @@
 package cl.pgatica.academiaflow.student.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class StudentResponse {
 
     private final Long id;
+
     private final String rut;
-    private final String nombres;
-    private final String apellidos;
+
+    @JsonProperty("nombres")
+    private final String names;
+
+    @JsonProperty("apellidos")
+    private final String lastNames;
+
     private final String email;
 
-    public StudentResponse(Long id, String rut, String nombres, String apellidos, String email) {
+    public StudentResponse(Long id, String rut, String names, String lastNames, String email) {
         this.id = id;
         this.rut = rut;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
+        this.names = names;
+        this.lastNames = lastNames;
         this.email = email;
     }
 
@@ -24,12 +32,12 @@ public class StudentResponse {
         return rut;
     }
 
-    public String getNombres() {
-        return nombres;
+    public String getNames() {
+        return names;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getLastNames() {
+        return lastNames;
     }
 
     public String getEmail() {

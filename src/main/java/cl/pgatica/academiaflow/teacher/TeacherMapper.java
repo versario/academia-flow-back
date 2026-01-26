@@ -13,8 +13,8 @@ public class TeacherMapper {
     public static Teacher toEntity(TeacherCreateRequest request) {
         return new Teacher(
             request.getRut(),
-            request.getNombres(),
-            request.getApellidos(),
+            request.getNames(),
+            request.getLastNames(),
             request.getEmail()
         );
     }

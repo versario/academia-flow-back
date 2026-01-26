@@ -13,8 +13,8 @@ public class StudentMapper {
     public static Student toEntity(StudentCreateRequest request) {
         return new Student(
             request.getRut(),
-            request.getNombres(),
-            request.getApellidos(),
+            request.getNames(),
+            request.getLastNames(),
             request.getEmail()
         );
     }

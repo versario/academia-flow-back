@@ -56,8 +56,8 @@ public class StudentServiceImpl implements StudentService {
         Student student = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Alumno no encontrado"));
 
-        student.setNames(request.getNombres());
-        student.setLastNames(request.getApellidos());
+        student.setNames(request.getNames());
+        student.setLastNames(request.getLastNames());
         student.setEmail(request.getEmail());
         
         Student updatedStudent = repository.save(student);

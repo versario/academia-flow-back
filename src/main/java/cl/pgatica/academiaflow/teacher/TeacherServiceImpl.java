@@ -56,8 +56,8 @@ public class TeacherServiceImpl implements TeacherService {
         Teacher teacher = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Profesor no encontrado"));
 
-        teacher.setNames(request.getNombres());
-        teacher.setLastNames(request.getApellidos());
+        teacher.setNames(request.getNames());
+        teacher.setLastNames(request.getLastNames());
         teacher.setEmail(request.getEmail());
 
         Teacher updatedTeacher = repository.save(teacher);
