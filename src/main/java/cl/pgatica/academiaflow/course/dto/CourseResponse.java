@@ -1,32 +1,52 @@
 package cl.pgatica.academiaflow.course.dto;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import cl.pgatica.academiaflow.course.dto.assessment.AssessmentResponse;
+
 public class CourseResponse {
 
     private final Long id;
-    private final String codigo;
-    private final String nombre;
-    private final Integer creditos;
 
-    public CourseResponse(Long id, String codigo, String nombre, Integer creditos) {
+    @JsonProperty("codigo")
+    private final String code;
+
+    @JsonProperty("nombre")
+    private final String name;
+
+    @JsonProperty("creditos")
+    private final Integer credits;
+
+    @JsonProperty("evaluaciones")
+    private final List<AssessmentResponse> assessments;
+
+    public CourseResponse(Long id, String code, String name, Integer credits, List<AssessmentResponse> assessments) {
         this.id = id;
-        this.codigo = codigo;
-        this.nombre = nombre;
-        this.creditos = creditos;
+        this.code = code;
+        this.name = name;
+        this.credits = credits;
+        this.assessments = assessments;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public String getCode() {
+        return code;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public Integer getCreditos() {
-        return creditos;
+    public Integer getCredits() {
+        return credits;
+    }
+
+    public List<AssessmentResponse> getAssessments() {
+        return assessments;
     }
 }

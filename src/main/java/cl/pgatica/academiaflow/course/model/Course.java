@@ -1,10 +1,16 @@
 package cl.pgatica.academiaflow.course.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import cl.pgatica.academiaflow.course.model.assessment.Assessment;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
@@ -31,6 +37,13 @@ public class Course {
     @Column(name = "credits", nullable = false)
     private Integer credits;
 
+    @OneToMany(
+        mappedBy = "course",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    private List<Assessment> assessments = new ArrayList<>();
+
     protected Course() {
     }
 
@@ -56,11 +69,20 @@ public class Course {
         return credits;
     }
 
+    public List<Assessment> getAssignments() {
+        return assessments;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
     public void setCredits(Integer credits) {
         this.credits = credits;
+    }
+
+    public void addAssessment(Assessment assessment) {
+        assessments.add(assessment);
+        assessment.setCourse(this);
     }
 }

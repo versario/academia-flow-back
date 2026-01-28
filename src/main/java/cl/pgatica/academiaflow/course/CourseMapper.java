@@ -1,7 +1,10 @@
 package cl.pgatica.academiaflow.course;
 
+import java.util.stream.Collectors;
+
 import cl.pgatica.academiaflow.course.dto.CourseCreateRequest;
 import cl.pgatica.academiaflow.course.dto.CourseResponse;
+import cl.pgatica.academiaflow.course.dto.CourseUpdateRequest;
 import cl.pgatica.academiaflow.course.model.Course;
 
 public class CourseMapper {
@@ -12,10 +15,15 @@ public class CourseMapper {
 
     public static Course toEntity(CourseCreateRequest request) {
         return new Course(
-            request.getCodigo(),
-            request.getNombre(),
-            request.getCreditos()
+            request.getCode(),
+            request.getName(),
+            request.getCredits()
         );
+    }
+
+    public static void updateEntity(Course course, CourseUpdateRequest request) {
+        course.setName(request.getName());
+        course.setCredits(request.getCredits());
     }
 
     public static CourseResponse toResponse(Course course) {
@@ -23,7 +31,11 @@ public class CourseMapper {
             course.getId(),
             course.getCode(),
             course.getName(),
-            course.getCredits()
+            course.getCredits(),
+            course.getAssignments()
+                .stream()
+                .map(AssessmentMapper::toResponse)
+                .collect(Collectors.toList())
         );
     }
 }

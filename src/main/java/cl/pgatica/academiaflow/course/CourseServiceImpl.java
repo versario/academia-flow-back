@@ -2,15 +2,17 @@ package cl.pgatica.academiaflow.course;
 
 import java.util.List;
 
+import org.hibernate.sql.ast.tree.update.Assignment;
 import org.springframework.stereotype.Service;
 
 import cl.pgatica.academiaflow.course.dto.CourseCreateRequest;
 import cl.pgatica.academiaflow.course.dto.CourseUpdateRequest;
 import cl.pgatica.academiaflow.course.dto.CourseResponse;
 import cl.pgatica.academiaflow.course.model.Course;
-
+import cl.pgatica.academiaflow.course.model.assessment.Assessment;
 import cl.pgatica.academiaflow.exception.ConflictException;
 import cl.pgatica.academiaflow.exception.ResourceNotFoundException;
+import jakarta.transaction.Transactional;;
 
 @Service
 public class CourseServiceImpl implements CourseService {
@@ -24,7 +26,7 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public CourseResponse create(CourseCreateRequest request) {
 
-        repository.findByCode(request.getCodigo())
+        repository.findByCode(request.getCode())
             .ifPresent(c -> {
                 throw new ConflictException("Ya existe un curso con ese código");
             });
@@ -50,18 +52,22 @@ public class CourseServiceImpl implements CourseService {
                 .toList();
     }
 
-   @Override
+   @Transactional
     public CourseResponse update(Long id, CourseUpdateRequest request) {
 
         Course course = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Asignatura no encontrada"));
 
-        course.setName(request.getNombre());
-        course.setCredits(request.getCreditos());
+        CourseMapper.updateEntity(course, request);
 
-        Course updated = repository.save(course);
+        if (request.getAssessments() != null) {
+            request.getAssessments().forEach(asReq -> {
+                Assessment assessment = AssessmentMapper.toEntity(asReq);
+                course.addAssessment(assessment);
+            });
+        }
 
-        return CourseMapper.toResponse(updated);
+        return CourseMapper.toResponse(course);
     }
 
     @Override
