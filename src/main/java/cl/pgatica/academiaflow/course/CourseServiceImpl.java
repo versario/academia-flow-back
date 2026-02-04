@@ -2,7 +2,6 @@ package cl.pgatica.academiaflow.course;
 
 import java.util.List;
 
-import org.hibernate.sql.ast.tree.update.Assignment;
 import org.springframework.stereotype.Service;
 
 import cl.pgatica.academiaflow.course.dto.CourseCreateRequest;
@@ -12,7 +11,7 @@ import cl.pgatica.academiaflow.course.model.Course;
 import cl.pgatica.academiaflow.course.model.assessment.Assessment;
 import cl.pgatica.academiaflow.exception.ConflictException;
 import cl.pgatica.academiaflow.exception.ResourceNotFoundException;
-import jakarta.transaction.Transactional;;
+import jakarta.transaction.Transactional;
 
 @Service
 public class CourseServiceImpl implements CourseService {
